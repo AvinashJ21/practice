@@ -36,11 +36,22 @@ public class Customer implements Serializable{
 	
 	private String mobileNo;
 	
+	private String roles;
+	
 	@CreationTimestamp
 	private Date createdDate;
 	
 	@UpdateTimestamp
 	private Date updatedDate;
+
+	
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
 
 	public Long getCustomerId() {
 		return customerId;
