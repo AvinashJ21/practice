@@ -10,6 +10,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,7 @@ import com.bank.customerservice.dto.CustomerDTO;
 import com.bank.customerservice.dto.CustomerDetailsDTO;
 import com.bank.customerservice.dto.CustomerResponseDTO;
 import com.bank.customerservice.service.CustmrService;
+import com.bank.customerservice.service.JWTService;
 
 import jakarta.validation.Valid;
 
@@ -31,6 +34,9 @@ public class CustomerController {
 
 	@Autowired
 	AuthenticationManager authManager;
+	
+	@Autowired
+	JWTService jwtService;
 
 	@PostMapping("/create")
 	public ResponseEntity<CustomerResponseDTO> createCustomer(@Valid @RequestBody CustomerDTO cstmrDto) {
@@ -50,12 +56,19 @@ public class CustomerController {
 		if (auth.isAuthenticated()) {
 			return ResponseEntity.status(HttpStatus.OK)
 					.body(new CustomerResponseDTO(HttpStatus.ACCEPTED.toString(), HttpStatus.ACCEPTED,
-							"User authenticated", new CustomerDetailsDTO(auth.getName(), null, "KEY",
+							"User authenticated", new CustomerDetailsDTO(auth.getName(), null, jwtService.getJWTKey(cstmrDetails.getUserName(), "USER"),
 									(List<? extends GrantedAuthority>) auth.getAuthorities())));
 		} else {
 			throw new BadCredentialsException("Invalid User");
 		}
 
+	}
+	
+	@GetMapping("/{customerId}")
+	public String getUser(@PathVariable String customerId) {
+		
+		return "SUCCESS";
+		
 	}
 
 }

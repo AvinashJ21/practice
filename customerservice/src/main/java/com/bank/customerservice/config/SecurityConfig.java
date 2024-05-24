@@ -9,9 +9,24 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.bank.customerservice.filter.CustomerAuthFilter;
+
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
 @Configuration
+@SecurityScheme(
+        name = "Authorization",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        scheme = "bearer"
+)
 public class SecurityConfig {
+	
+	@Autowired
+	CustomerAuthFilter cstmFilter;
 
 	@Bean
 	public SecurityFilterChain configSecurity(HttpSecurity http) throws Exception {
@@ -23,6 +38,7 @@ public class SecurityConfig {
 										"/customers/create", "/customers/login")
 								.permitAll().anyRequest().authenticated())
 				.formLogin().disable();
+		http.addFilterAfter(cstmFilter, UsernamePasswordAuthenticationFilter.class);
 		return http.build();
 
 	}
