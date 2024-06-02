@@ -1,0 +1,24 @@
+spring:
+  h2:
+    console:
+      enabled: 'true'
+  datasource:
+    url: jdbc:h2:mem:testdb
+  application:
+    name: customerservice
+  jpa:
+    properties:
+      hibernate:
+        format_sql: 'true'
+        connection:
+          isolation: '2'
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+jwt:
+  secretkey: a32123dxkfek343213ddk323osccker3oelmdlmal33omsd23388snxdsjashdehwb
+service:
+  name: "Texas Bank Customers"
+  contact:
+    email: "helpdesk@texasbank.com"
+    phone: "+198726482214"

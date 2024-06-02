@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bank.customerservice.dto.CustomerDTO;
 import com.bank.customerservice.dto.CustomerDetailsDTO;
 import com.bank.customerservice.dto.CustomerResponseDTO;
+import com.bank.customerservice.dto.ServiceInfoDTO;
 import com.bank.customerservice.service.CustmrService;
 import com.bank.customerservice.service.JWTService;
 
@@ -38,6 +39,9 @@ public class CustomerController {
 	@Autowired
 	JWTService jwtService;
 
+	@Autowired
+	ServiceInfoDTO serviceInfoDto;
+	
 	@PostMapping("/create")
 	public ResponseEntity<CustomerResponseDTO> createCustomer(@Valid @RequestBody CustomerDTO cstmrDto) {
 		if (cstmrService.createCustomer(cstmrDto) != -1) {
@@ -69,6 +73,12 @@ public class CustomerController {
 		
 		return "SUCCESS";
 		
+	}
+	
+	@GetMapping("/serviceinfo")
+	public ResponseEntity<ServiceInfoDTO> getServiceInfo(){
+		
+		return ResponseEntity.status(HttpStatus.OK).body(serviceInfoDto);
 	}
 
 }
