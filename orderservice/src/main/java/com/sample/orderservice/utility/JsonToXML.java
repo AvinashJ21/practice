@@ -2,6 +2,7 @@ package com.sample.orderservice.utility;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -26,12 +27,14 @@ public class JsonToXML {
 	   try {
 	   Marshaller marshObj = jxb.createMarshaller();
 	   marshObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-	   marshObj.marshal(obj, new FileOutputStream(XML_LOCATION+"shiporder"+new Date().getTime()+".xml"));
-		
-	} catch (FileNotFoundException | JAXBException e) {
+	   FileOutputStream fos = new FileOutputStream(XML_LOCATION+"shiporder"+new Date().getTime()+".xml");
+	   marshObj.marshal(obj, fos);
+	   fos.close();
+	} catch (JAXBException | IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	   
 	   
    
    }
