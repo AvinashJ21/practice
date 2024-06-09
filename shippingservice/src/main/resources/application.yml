@@ -10,6 +10,16 @@ spring:
       enabled: true
 app:
   orders:
-    loc: "G://Avinash_Inrerv_Prep//sample project//xml_orders_location//"         
+    loc: "G://Avinash_Inrerv_Prep//sample project//xml_orders_location//"
+logging:
+  level:
+    root: warn
+    com.sample: debug
+  pattern:
+    console: "{\"time\": \"%d\", \"level\": \"%p\", \"thread\": \"%t\", \"shippingtransaction-id\": \"%X{ShippingTransaction-Id}\", \"source\": \"%logger{80}\", \"message\": \"%replace(%m%wEx{6}){'[\r\n]+', '\\\\n'}%nopex\"}%n"
+      
+    
+           
+          
       
     
