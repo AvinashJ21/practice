@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: orderservice
+  datasource:
+    url: jdbc:h2:mem:testdb
+  h2:
+    console:
+      enabled: true
+logging:
+  level:
+    root: info
+    com.sample: debug
+  pattern:
+    console: "{\"time\": \"%d\", \"level\": \"%p\", \"thread\": \"%t\", \"ordertransaction-id\": \"%X{OrderTransaction-Id}\", \"source\": \"%logger{80}\", \"message\": \"%replace(%m%wEx{6}){'[\r\n]+', '\\\\n'}%nopex\"}%n"   
+    
+app:
+  orders:
+    loc: "G://Avinash_Inrerv_Prep//sample project//xml_orders_location//" 
+    
+                

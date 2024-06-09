@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: shippingservice
+  datasource:
+    url: jdbc:h2:mem:testdb
+  h2:
+    console:
+      enabled: true
+app:
+  orders:
+    loc: "G://Avinash_Inrerv_Prep//sample project//xml_orders_location//"         
+      
+    

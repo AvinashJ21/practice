@@ -1,0 +1,5 @@
+pojo to XML
+https://www.javatpoint.com/jaxb-marshalling-example
+
+injecting properties variables in static fields
+https://www.baeldung.com/spring-inject-static-field
