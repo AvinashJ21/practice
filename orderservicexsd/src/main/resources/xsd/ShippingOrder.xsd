@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="/jaxb/gen" xmlns:shipping="/jaxb/gen"
+	elementFormDefault="qualified">
+	<element name="shippingOrder" type="shipping:ShippingOrderXSD"></element>
+	<complexType name="ShippingOrderXSD">
+		<sequence>
+			<element name="orderId" type="long"/>
+			<element name="productId" type="long" nillable="false"/>
+			<element name="productName" type="string" />
+			<element name="productPrice" type="double" />
+			<element name="quantity" type="int" nillable="false"/>
+			<element name="userId" type="long" nillable="false"/>
+			<element name="shippingAdd" type="string" />
+			<element name="pinCode" type="string" />
+			<element name="country" type="string" nillable="false"/>
+		</sequence>
+	</complexType>
+</schema>

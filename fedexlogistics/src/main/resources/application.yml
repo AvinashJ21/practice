@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: FedexLogistics
+server:
+  port: 8084
+kafka:
+  id: fedex
+  group-id: logistics
+  topic:
+    name:
+      lululemon: fedex_lululemon
+  broker-address: localhost:9092
+      
+          

@@ -1,0 +1,58 @@
+{
+	"type":"record",
+	"name":"OrderDetailsAvro",
+	"namespace":"com.generated.sources",
+	"fields":[
+		{
+		    "name":"shippingId",
+			"type":"long"
+	    },
+		{
+		    "name":"orderId",
+			"type":"long"
+	    },
+		{
+		    "name":"productId",
+			"type":"long"
+	    },
+		{
+		    "name":"userId",
+			"type":"long"
+	    },
+		{
+		    "name":"quantity",
+			"type":"int"
+	    },
+		{
+		    "name":"productPrice",
+			"type":"double"
+	    },
+		{
+		    "name":"productName",
+			"type":"string"
+	    },
+		{
+		    "name":"fileName",
+			"type":"string"
+	    }
+	    ,
+		{
+		    "name":"shippingAdd",
+			"type":"string"
+	    }
+	    ,
+		{
+		    "name":"pinCode",
+			"type":"string"
+	    }
+	    ,
+		{
+		    "name":"country",
+			"type":"string"
+	    }
+	    
+	
+	    
+	
+	]
+}	

@@ -1,0 +1,28 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: shippingserviceavro 
+  datasource:
+    url: jdbc:h2:mem:testdb
+  h2:
+    console:
+      enabled: true
+  kafka:
+    consumer:
+      group-id: logistics
+    bootstrap-servers: localhost:9092
+app:
+  orders:
+    loc: "D://local_pratice//xml_orders_location//"
+    processed: "D://local_pratice//xml_orders_location//processed//" 
+    error: "D://local_pratice//xml_orders_location//error//" 
+    kafka-topic-name: fedex_lululemon           
+valid:
+  logistics:
+    fedex_lululemon: 
+      - Denmark
+      - Italy
+    UPS_lululemon: 
+      - Spain
+      - Norway  
